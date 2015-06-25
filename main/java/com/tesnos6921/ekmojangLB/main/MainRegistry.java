@@ -1,4 +1,4 @@
-package com.tesnos6921.ekmojangLB.main;
+package com.tesnos6921.ekmojanglb.main;
 
 import java.io.IOException;
 
