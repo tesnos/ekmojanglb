@@ -34,28 +34,29 @@ public class MainRegistry {
 	@Instance
 	public static MainRegistry modInstance;
 	
-	public static Block LuckyBlock;
+	public static Block lucky_block;
 	
 	@EventHandler
 	public static void PreLoad(FMLPreInitializationEvent PreEvent) throws IOException{
-		LuckyBlock = new LuckyBlock(Material.ground).setUnlocalizedName("lucky_block").setCreativeTab(CreativeTabs.tabBlock);
-		GameRegistry.registerBlock(LuckyBlock, LuckyBlock.getUnlocalizedName());
+		lucky_block = new LuckyBlock(Material.ground).setUnlocalizedName("lucky_block").setCreativeTab(CreativeTabs.tabBlock);
+		GameRegistry.registerBlock(lucky_block, "lucky_block");
 		proxy.registerRenderInfo();
 		MinecraftForge.EVENT_BUS.register(new BBEH());
 	}
 	
 	@EventHandler
 	public void load(FMLInitializationEvent event){
-		if(event.getSide() == Side.CLIENT)
-    	{
 		System.out.println("Registering Texture");
-    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(LuckyBlock), 0, new ModelResourceLocation(RefStrings.MODID + ":lucky_block", "inventory"));
-    	System.out.println("Texture Registered");
-    	}
-		ModelResourceLocation jsonfile = new ModelResourceLocation(RefStrings.MODID + ":lucky_block", "inventory");
-		System.out.println(jsonfile.getResourceDomain());
 		
-		GameRegistry.addShapedRecipe(new ItemStack(LuckyBlock, 1), new Object[] { "YXY", "XZX", "YXY", 'X', Items.gold_ingot, 'Y', Items.blaze_powder, 'Z', Blocks.dropper });
+    	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(lucky_block), 0, new ModelResourceLocation(RefStrings.MODID + ":lucky_block", "inventory"));
+    	
+    	System.out.println("Texture Registered");
+		
+    	ModelResourceLocation jsonfile = new ModelResourceLocation(RefStrings.MODID + ":lucky_block", "inventory");
+		
+    	System.out.println(jsonfile.getResourceDomain());
+		
+		GameRegistry.addShapedRecipe(new ItemStack(lucky_block, 1), new Object[] { "YXY", "XZX", "YXY", 'X', Items.gold_ingot, 'Y', Items.blaze_powder, 'Z', Blocks.dropper });
 		
 //		if(event.getSide() == Side.CLIENT)
 //    	{

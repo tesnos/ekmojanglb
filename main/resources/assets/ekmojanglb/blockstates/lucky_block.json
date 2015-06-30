@@ -1,7 +1,5 @@
 {
 	"variants": {
-		"normal": [
-		{ "model": "ekmojanglb:lucky_block" }
-		]
+		"normal": { "model": "ekmojanglb:lucky_block" }
 	}
 }
